@@ -64,35 +64,40 @@ export const CreateRoom: React.FC = () => {
 
     return (
         <Layout>
-            <div className="max-w-2xl mx-auto space-y-8">
+            <div className="max-w-3xl mx-auto space-y-8">
                 {!room ? (
-                    <div className="text-center">
+                    <div className="text-center min-h-[50vh] flex flex-col items-center justify-center">
                         <button
                             onClick={createRoom}
                             disabled={loading}
-                            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl text-xl font-bold disabled:opacity-50"
+                            className="neon-button bg-gradient-to-r from-neon-purple to-neon-pink text-white text-2xl px-12 py-6 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {loading ? 'Creando...' : 'Crear Sala'}
+                            {loading ? (
+                                <span className="flex items-center gap-3">
+                                    <span className="animate-spin">⚙️</span> Creando...
+                                </span>
+                            ) : '⚡ Crear Sala Nueva'}
                         </button>
                     </div>
                 ) : (
-                    <div className="space-y-6">
-                        <div className="bg-gray-800 p-6 rounded-xl text-center">
-                            <p className="text-gray-400 mb-2">Código de la Sala</p>
-                            <h2 className="text-5xl font-mono font-bold text-yellow-400 tracking-wider">
+                    <div className="space-y-8 animate-fade-in">
+                        <div className="glass-panel p-8 text-center relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-purple to-neon-cyan"></div>
+                            <p className="text-gray-400 mb-4 uppercase tracking-widest text-sm">Código de la Sala</p>
+                            <h2 className="text-7xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan tracking-wider drop-shadow-lg">
                                 {room.code}
                             </h2>
                         </div>
 
-                        <div className="bg-gray-800 p-6 rounded-xl">
-                            <label className="block text-gray-400 mb-2">Categoría de Preguntas</label>
+                        <div className="glass-panel p-8">
+                            <label className="block text-neon-cyan mb-4 font-bold uppercase tracking-wide">Categoría de Preguntas</label>
                             <select
                                 value={selectedCategory}
                                 onChange={(e) => setSelectedCategory(e.target.value)}
-                                className="w-full bg-gray-700 p-3 rounded text-white border border-gray-600 focus:border-blue-500 outline-none"
+                                className="input-field text-lg bg-black/50"
                             >
                                 {categories.map(cat => (
-                                    <option key={cat} value={cat}>{cat}</option>
+                                    <option key={cat} value={cat} className="bg-dark-bg">{cat}</option>
                                 ))}
                             </select>
                         </div>
@@ -102,9 +107,9 @@ export const CreateRoom: React.FC = () => {
                         <button
                             onClick={startGame}
                             disabled={room.players.length === 0}
-                            className="w-full py-4 bg-green-600 hover:bg-green-700 rounded-xl text-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full neon-button bg-gradient-to-r from-neon-cyan to-blue-600 text-white disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
                         >
-                            Iniciar Juego
+                            🚀 Iniciar Juego
                         </button>
                     </div>
                 )}

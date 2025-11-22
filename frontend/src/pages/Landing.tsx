@@ -7,26 +7,37 @@ export const Landing: React.FC = () => {
 
     return (
         <Layout>
-            <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
-                <h2 className="text-4xl font-bold text-center mb-8">
-                    Bienvenido al <span className="text-blue-500">QA Quiz Game</span>
-                </h2>
+            <div className="flex flex-col items-center justify-center min-h-[70vh] space-y-12">
+                <div className="text-center space-y-4 animate-float">
+                    <h2 className="text-6xl md:text-8xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-purple via-neon-pink to-neon-cyan drop-shadow-[0_0_30px_rgba(176,38,255,0.6)]">
+                        QA QUIZ
+                    </h2>
+                    <p className="text-xl md:text-2xl text-blue-200 font-light tracking-wide">
+                        Desafía tu conocimiento en tiempo real
+                    </p>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-md">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl">
                     <button
                         onClick={() => navigate('/create')}
-                        className="p-8 bg-blue-600 hover:bg-blue-700 rounded-xl transition-all transform hover:scale-105 flex flex-col items-center"
+                        className="group relative p-1 rounded-2xl bg-gradient-to-r from-neon-purple to-neon-pink hover:shadow-[0_0_40px_rgba(176,38,255,0.6)] transition-all duration-300 transform hover:-translate-y-2"
                     >
-                        <span className="text-2xl font-bold mb-2">Soy Host</span>
-                        <span className="text-blue-200">Crear una nueva sala</span>
+                        <div className="bg-dark-bg h-full rounded-xl p-8 flex flex-col items-center justify-center relative z-10 group-hover:bg-opacity-90 transition-all">
+                            <span className="text-4xl mb-4">👑</span>
+                            <span className="text-2xl font-bold font-display mb-2 text-white">Soy Host</span>
+                            <span className="text-gray-400 group-hover:text-white transition-colors">Crear una nueva sala</span>
+                        </div>
                     </button>
 
                     <button
                         onClick={() => navigate('/join')}
-                        className="p-8 bg-green-600 hover:bg-green-700 rounded-xl transition-all transform hover:scale-105 flex flex-col items-center"
+                        className="group relative p-1 rounded-2xl bg-gradient-to-r from-neon-cyan to-blue-500 hover:shadow-[0_0_40px_rgba(5,217,232,0.6)] transition-all duration-300 transform hover:-translate-y-2"
                     >
-                        <span className="text-2xl font-bold mb-2">Soy Jugador</span>
-                        <span className="text-green-200">Unirse a una sala</span>
+                        <div className="bg-dark-bg h-full rounded-xl p-8 flex flex-col items-center justify-center relative z-10 group-hover:bg-opacity-90 transition-all">
+                            <span className="text-4xl mb-4">🎮</span>
+                            <span className="text-2xl font-bold font-display mb-2 text-white">Soy Jugador</span>
+                            <span className="text-gray-400 group-hover:text-white transition-colors">Unirse a una sala</span>
+                        </div>
                     </button>
                 </div>
             </div>
