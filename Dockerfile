@@ -1,18 +1,18 @@
-FROM node:18-alpine as build-frontend
+FROM node:22-alpine as build-frontend
 WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend/ .
 RUN npm run build
 
-FROM node:18-alpine as build-backend
+FROM node:22-alpine as build-backend
 WORKDIR /app/backend
 COPY backend/package*.json ./
 RUN npm install
 COPY backend/ .
 RUN npm run build
 
-FROM node:18-alpine
+FROM node:22-alpine
 WORKDIR /app
 
 # Copy backend artifacts
