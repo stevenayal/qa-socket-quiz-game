@@ -17,7 +17,8 @@ export const CreateRoom: React.FC = () => {
         setIsHost(true);
 
         // Fetch categories
-        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/questions/categories`)
+        const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:3000');
+        fetch(`${API_URL}/api/questions/categories`)
             .then(res => res.json())
             .then(data => {
                 setCategories(data);
